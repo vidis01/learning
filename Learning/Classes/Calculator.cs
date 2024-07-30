@@ -7,9 +7,9 @@
             return a + b; 
         }
 
-        public int Division (int a, int b)
+        public double Division (int a, int b)
         {
-            return a / b;            
+            return a / (double)b;            
         }
     }
 }

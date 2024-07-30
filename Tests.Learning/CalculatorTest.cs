@@ -20,5 +20,14 @@ namespace Tests.Learning
 
             Assert.Equal(expectedResult, actualRezul);
         }
+
+        [Fact]
+        public void TestDivision()
+        {
+            var actualRezul = calculator.Division(-1, 0);
+
+            //Assert.Equal(double.NegativeInfinity, actualRezul);
+        }
+
     }
 }
