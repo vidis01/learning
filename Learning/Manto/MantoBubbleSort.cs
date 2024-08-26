@@ -4,9 +4,20 @@
     {
         public static int[] Sort(int[] intArray)
         {
-            //Sort algoritm
+            int temp = 0;
 
-            
+            for (int write = 0; write < intArray.Length; write++)
+            {
+                for (int sort = 0; sort < intArray.Length - 1; sort++)
+                {
+                    if (intArray[sort] > intArray[sort + 1])
+                    {
+                        temp = intArray[sort + 1];
+                        intArray[sort + 1] = intArray[sort];
+                        intArray[sort] = temp;
+                    }
+                }
+            }
             return intArray;
         }
     }
