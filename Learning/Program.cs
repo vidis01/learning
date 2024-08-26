@@ -1,6 +1,5 @@
 ﻿using Learning.Classes;
 using Learning.Interfaces;
-using System.Data;
 using System.Text;
 
 namespace Learning
