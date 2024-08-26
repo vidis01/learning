@@ -18,14 +18,6 @@
                     }
                 }
             }
-
-            //blogas kodas
-            for (int a = 1; a < intArray.Length; a++)
-            {
-                Console.WriteLine(intArray[a]);
-            }
-            //blogas kodas
-
             return intArray;
         }
     }
