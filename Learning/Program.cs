@@ -26,12 +26,6 @@ namespace Learning
                     Console.WriteLine(((ITest)shape).Name);
                 }
             }
-
-            
-
-
-
-
         }
     }
 }
