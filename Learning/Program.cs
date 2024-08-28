@@ -122,13 +122,8 @@ namespace Learning
 
 
             var textAnalyzer = new TextAnalyzer();
-
             textAnalyzer.AnalyzedText("TestFile.txt");
-
-            foreach (var item in textAnalyzer._letters)
-            {
-                Console.WriteLine($"{item.Key} - {item.Value}");
-            }
+            textAnalyzer.MenuChoice();
         }
 
         #region paskaita apie exceptions 2024-08-28
