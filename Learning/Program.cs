@@ -27,6 +27,7 @@
             //Console.WriteLine("Iveskite zodi:");
 
             //var word = Console.ReadLine();
+
             //try
             //{
             //    if (word.Length < 5)
@@ -46,12 +47,23 @@
             //{
             //    Console.WriteLine(e.Message);
             //}
+
             //finally
             //{
             //    Console.WriteLine("Nieko daryt nereikia, situacija kontroliuojama.");
             //}
 
             //Console.WriteLine("Kodas toliau vykdomas.");
+
+            //try
+            //{
+            //    string? s = null;
+            //    Console.WriteLine(s.Length);
+            //}
+            //catch (Exception e) when (LogException(e))
+            //{
+            //}
+            //Console.WriteLine("Exception must have been handled");
 
             #endregion
 
@@ -73,6 +85,7 @@
             //    Console.WriteLine(e.Message);
             //}
 
+            //1
             //// Create a string array with the lines of text
             //string[] lines = { "First line", "Second line", "Third line" };
 
@@ -87,7 +100,34 @@
             //    foreach (string line in lines)
             //        outputFile.WriteLine(line);
             //}
+
+            //2
+            //// Create a string with a line of text.
+            //string text = "First line" + Environment.NewLine;
+
+            //// Set a variable to the Documents path.
+            //string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+            //// Write the text to a new file named "WriteFile.txt".
+            //File.WriteAllText(Path.Combine(docPath, "WriteFile.txt"), text);
+
+            //// Create a string array with the additional lines of text
+            //string[] lines = { "New line 1", "New line 2" };
+
+            //// Append new lines of text to the file
+            //File.AppendAllLines(Path.Combine(docPath, "WriteFile.txt"), lines);
             #endregion
         }
+
+        #region paskaita apie exceptions 2024-08-28
+        //private static bool LogException(Exception e)
+        //{
+        //    Console.WriteLine($"\tIn the log routine. Caught {e.GetType()}");
+        //    Console.WriteLine($"\tMessage: {e.Message}");
+        //    return true;
+        //}
+        #endregion
+
+
     }
 }
