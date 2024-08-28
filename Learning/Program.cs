@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            #region paskaita apie interface 2024-08-27
+            #region paskaita apie abstrakciaias klases ir interface 2024-08-27
             //var a = new MyClass(8);
             //Console.WriteLine(a.Name);
             //Console.WriteLine(((IName)a).Name);
