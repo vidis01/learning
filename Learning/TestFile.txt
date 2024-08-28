@@ -1,1 +1,5 @@
-bebrai puola
+The following example shows an asynchronous read
+operation within a console app. The file contents are read and stored in a string variable,
+which is then written to the console.
+
+Create a StreamReader instance.
