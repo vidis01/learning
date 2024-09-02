@@ -124,6 +124,10 @@ namespace Learning
             var textAnalyzer = new TextAnalyzer();
             textAnalyzer.AnalyzedText("TestFile.txt");
             textAnalyzer.MainMenuChoice();
+
+
+
+            
         }
 
         #region paskaita apie exceptions 2024-08-28

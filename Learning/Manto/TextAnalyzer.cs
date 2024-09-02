@@ -1,19 +1,18 @@
-﻿using System;
-using System.IO;
-using System.Collections.Generic;
-using System.Numerics;
+﻿
+using Learning.Classes;
+using Learning.Enums;
 namespace Learning.Manto
 {
     public class TextAnalyzer
     {
-        private Dictionary<string, int> _words;
-        private Dictionary<char, int> _letters;
-        private Dictionary<char, int> _symbols;
-        private Dictionary<char, int> _numbers;
-        private Dictionary<char, int> _vowels;
-        private Dictionary<char, int> _consonants;
-        private Dictionary<char, int> _punctuations;
-        private Dictionary<char, int> _miscSymbols;
+        private readonly Dictionary<string, int> _words;
+        //private Dictionary<char, int> _letters;
+        private Dictionary<char, Symbol> _symbols;
+        //private Dictionary<char, int> _numbers;
+        //private Dictionary<char, int> _vowels;
+        //private Dictionary<char, int> _consonants;
+        //private Dictionary<char, int> _punctuations;
+        //private Dictionary<char, int> _miscSymbols;
         private string _word = "";
         private int _totalVowelsCount = 0;
         private int _totalConsonantsCount = 0;
@@ -25,13 +24,13 @@ namespace Learning.Manto
         public TextAnalyzer()
         {
             _words = new();
-            _letters = new();
+            //_letters = new();
             _symbols = new();
-            _numbers = new();
-            _vowels = new();
-            _consonants = new();
-            _punctuations = new();
-            _miscSymbols = new();
+            //_numbers = new();
+            //_vowels = new();
+            //_consonants = new();
+            //_punctuations = new();
+            //_miscSymbols = new();
         }
         private bool IsWordEndSymbol(int symbol)
         {
@@ -96,18 +95,22 @@ namespace Learning.Manto
         private void AddEachSymbolToDict(int symbol)
         {
             char s = char.ToLower((char)symbol);
-            if (_symbols.TryGetValue(s, out int value))
+            if (_symbols.TryGetValue(s, out _))
             {
-                _symbols[s] = ++value;
+                _symbols[s].Count++;
             }
             else
             {
-                _symbols.Add(s, 1);
+                var simbolis = new Symbol();
+                //CountingAddingIndividualyEachSymbol(simbolis) ir nebekviest prie meniu
+                //paskui apsirasyti metoda A(simbolis) ir metodas viduje supliusuos atitiyinkamus countus: leters numbers ir t.t.
+                _symbols.Add(s, simbolis);
+                
             }
         }
-        private void CountingAddingIndividualyEachSymbol()
+        private void CountingAddingIndividualyEachSymbol() //paduot parametra
         {
-            foreach (var item in _symbols)
+            foreach (var item in _symbols) //ciklo nebebus
             {
                 switch (char.ToLower(item.Key))
                 {
@@ -117,9 +120,11 @@ namespace Learning.Manto
                     case 'u':
                     case 'o':
                     case 'y':
-                        _totalVowelsCount += item.Value;
-                        _letters.TryAdd(item.Key, item.Value);
-                        _vowels.TryAdd(item.Key, item.Value);
+                        _totalVowelsCount += item.Value.Count;
+                        item.Value.SymbolIndications.Add(Enums.SymbolTypeEnum.LETTER);
+                        item.Value.SymbolIndications.Add(Enums.SymbolTypeEnum.VOWEL);
+                        //_letters.TryAdd(item.Key, item.Value);
+                        //_vowels.TryAdd(item.Key, item.Value);
                         break;
                     case 'b':
                     case 'c':
@@ -141,9 +146,11 @@ namespace Learning.Manto
                     case 'w':
                     case 'x':
                     case 'z':
-                        _totalConsonantsCount += item.Value;
-                        _letters.TryAdd(item.Key, item.Value);
-                        _consonants.TryAdd(item.Key, item.Value);
+                        item.Value.SymbolIndications.Add(Enums.SymbolTypeEnum.LETTER);
+                        item.Value.SymbolIndications.Add(Enums.SymbolTypeEnum.CONSONANT);
+                        _totalConsonantsCount += item.Value.Count;
+                        //_letters.TryAdd(item.Key, item.Value);
+                        //_consonants.TryAdd(item.Key, item.Value);
                         break;
                     case '0':
                     case '1':
@@ -155,19 +162,23 @@ namespace Learning.Manto
                     case '7':
                     case '8':
                     case '9':
-                        _totalNumbersCount += item.Value;
-                        _numbers.TryAdd(item.Key, item.Value);
+
+                        _totalNumbersCount += item.Value.Count;
+                        item.Value.SymbolIndications.Add(Enums.SymbolTypeEnum.NUMBER);
+                        //_numbers.TryAdd(item.Key, item.Value);
                         break;
                     default:
                         if ((int)item.Key >= 32 && (int)item.Key <= 46)
                         {
-                            _totalPunctuationsCount += item.Value;
-                            _punctuations.TryAdd(item.Key, item.Value);
+                            _totalPunctuationsCount += item.Value.Count;
+                            item.Value.SymbolIndications.Add(Enums.SymbolTypeEnum.PUNCTUATIONS);
+                            //_punctuations.TryAdd(item.Key, item.Value);
                         }
                         else
                         {
-                            _miscSymbolsCount += item.Value;
-                            _miscSymbols.TryAdd(item.Key, item.Value);
+                            _miscSymbolsCount += item.Value.Count;
+                            item.Value.SymbolIndications.Add(Enums.SymbolTypeEnum.MISC);
+                            //_miscSymbols.TryAdd(item.Key, item.Value);
                         }
                         break;
                 }
@@ -218,20 +229,50 @@ namespace Learning.Manto
             Console.WriteLine($"Total miscellaneous symbols: {_miscSymbolsCount}");
             Console.WriteLine($"Total numbers: {_totalNumbersCount}");
         }
-        public void PrintDetailedSelection(Dictionary<char, int> selectedDictionary, string selectionName)
-        {  
+        //public void PrintDetailedSelection(Dictionary<char, int> selectedDictionary, string selectionName)
+        //{  
+        //    Console.WriteLine("**************************************************************");
+        //    Console.WriteLine($"    This shows all {selectionName} provided text have   ");
+        //    Console.WriteLine("            and how many each of them there are          ");
+        //    Console.WriteLine("**************************************************************");
+        //    int howManyLines = _howManyLinesToPrint;
+        //    foreach (var item in selectedDictionary)
+        //    {
+        //        Console.WriteLine($"{item.Key} - {item.Value} time(s);");
+        //        howManyLines--;
+        //        if (howManyLines == 0)
+        //        {
+        //            Console.WriteLine("Do you want to continue printing?(\"y\" to continue)");
+        //            string? yn = Console.ReadLine();
+        //            if (yn != "y")
+        //            {
+        //                break;
+        //            }
+        //            else
+        //            {
+        //                howManyLines = _howManyLinesToPrint;
+        //            }
+        //        }
+        //    }
+        //    Console.WriteLine("\n--------This is the end of list----------\n");
+        //}
+        public void PrintDetailedSelection()
+        {
             Console.WriteLine("**************************************************************");
-            Console.WriteLine($"    This shows all {selectionName} provided text have   ");
+            Console.WriteLine($"    This shows all words provided text have   ");
             Console.WriteLine("            and how many each of them there are          ");
             Console.WriteLine("**************************************************************");
             int howManyLines = _howManyLinesToPrint;
-            foreach (var item in selectedDictionary)
+            int totalWordsLeftToPrint = _words.Count;
+
+            foreach (var item in _words)
             {
                 Console.WriteLine($"{item.Key} - {item.Value} time(s);");
                 howManyLines--;
                 if (howManyLines == 0)
                 {
-                    Console.WriteLine("Do you want to continue printing?(\"y\" to continue)");
+                    totalWordsLeftToPrint -= _howManyLinesToPrint;
+                    Console.WriteLine($"Do you want to continue printing?(\"y\" to continue)(Words left: {totalWordsLeftToPrint})");
                     string? yn = Console.ReadLine();
                     if (yn != "y")
                     {
@@ -245,23 +286,23 @@ namespace Learning.Manto
             }
             Console.WriteLine("\n--------This is the end of list----------\n");
         }
-        public void PrintDetailedSelection(Dictionary<string, int> selectedDictionary, string selectionName)
+        public void PrintDetailedSelection(SymbolTypeEnum symbolType)
         {
             Console.WriteLine("**************************************************************");
-            Console.WriteLine($"    This shows all {selectionName} provided text have   ");
+            Console.WriteLine($"    This shows all {symbolType.ToString().ToLower()} provided text have   ");
             Console.WriteLine("            and how many each of them there are          ");
             Console.WriteLine("**************************************************************");
             int howManyLines = _howManyLinesToPrint;
-            int totalWordsLeftToPrint = _words.Count;
+
+            var selectedDictionary = _symbols.Where(s => s.Value.SymbolIndications.Contains(symbolType)).OrderBy(c => c.Key);
 
             foreach (var item in selectedDictionary)
             {
-                Console.WriteLine($"{item.Key} - {item.Value} time(s);");
+                Console.WriteLine($"{item.Key} - {item.Value.Count} time(s);");
                 howManyLines--;
                 if (howManyLines == 0)
                 {
-                    totalWordsLeftToPrint -= _howManyLinesToPrint;
-                    Console.WriteLine($"Do you want to continue printing?(\"y\" to continue)(Words left: {totalWordsLeftToPrint})");
+                    Console.WriteLine("Do you want to continue printing?(\"y\" to continue)");
                     string? yn = Console.ReadLine();
                     if (yn != "y")
                     {
@@ -289,31 +330,32 @@ namespace Learning.Manto
                 switch (entry)
                 {
                     case "1":
-                        PrintDetailedSelection(_letters, "letters");
+                        //PrintDetailedSelection(_letters, "letters");
+                        PrintDetailedSelection(SymbolTypeEnum.LETTER);
                         keepShowingDetailedMenuChoices = false;
                         break;
                     case "2":
-                        PrintDetailedSelection(_vowels, "vowels");
+                        PrintDetailedSelection(SymbolTypeEnum.VOWEL);
                         keepShowingDetailedMenuChoices = false;
                         break;
                     case "3":
-                        PrintDetailedSelection(_consonants, "consonants");
+                        PrintDetailedSelection(SymbolTypeEnum.CONSONANT);
                         keepShowingDetailedMenuChoices = false;
                         break;
                     case "4":
-                        PrintDetailedSelection(_punctuations, "punctuations");
+                        PrintDetailedSelection(SymbolTypeEnum.PUNCTUATIONS);
                         keepShowingDetailedMenuChoices = false;
                         break;
                     case "5":
-                        PrintDetailedSelection(_miscSymbols, "miscellaneous symbols");
+                        PrintDetailedSelection(SymbolTypeEnum.MISC);
                         keepShowingDetailedMenuChoices = false;
                         break;
                     case "6":
-                        PrintDetailedSelection(_numbers, "numbers");
+                        PrintDetailedSelection(SymbolTypeEnum.NUMBER);
                         keepShowingDetailedMenuChoices = false;
                         break;
                     case "7":
-                        PrintDetailedSelection(_words, "words");
+                        PrintDetailedSelection();
                         keepShowingDetailedMenuChoices = false;
                         break;
                     case "8":
