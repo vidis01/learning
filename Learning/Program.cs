@@ -1,4 +1,6 @@
-﻿namespace Learning
+﻿using Learning.Manto;
+
+namespace Learning
 {
     internal class Program
     {
@@ -117,6 +119,15 @@
             //// Append new lines of text to the file
             //File.AppendAllLines(Path.Combine(docPath, "WriteFile.txt"), lines);
             #endregion
+
+
+            var textAnalyzer = new TextAnalyzer();
+            textAnalyzer.AnalyzedText("TestFile.txt");
+            textAnalyzer.MainMenuChoice();
+
+
+
+            
         }
 
         #region paskaita apie exceptions 2024-08-28
