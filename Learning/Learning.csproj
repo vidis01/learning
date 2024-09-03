@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Database.Learning\Database.Learning.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="TestFile.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
