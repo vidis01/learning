@@ -130,9 +130,9 @@ namespace Learning
             #endregion
 
 
-            var textAnalyzer = new TextAnalyzer();
-            textAnalyzer.AnalyzedText("TestFile.txt");
-            textAnalyzer.MainMenuChoice();            
+            //var textAnalyzer = new TextAnalyzer();
+            //textAnalyzer.AnalyzedText("TestFile.txt");
+            //textAnalyzer.MainMenuChoice();            
         }
     }
 }
