@@ -11,6 +11,7 @@
 
         private int vidmantoSkaicius = 9;
 
+        private string mantoAmzius = "no idea";
         private B b;
 
         public A()
