@@ -6,6 +6,8 @@
         private int Weight { get; set; }
         private string Name { get; set; }
         private string LastName { get; set; }
+        
+        private string vidmantoPropertis = "";
 
         private B b;
 
