@@ -6,6 +6,7 @@
         private int Weight { get; set; }
         private string Name { get; set; }
         private string LastName { get; set; }
+        private int vidmantoSkaicius = 9;
 
         private B b;
 
