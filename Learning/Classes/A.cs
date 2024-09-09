@@ -7,6 +7,7 @@
         private string Name { get; set; }
         private string LastName { get; set; }
 
+        private string laimioPropertis = "";
         private B b;
 
         public A()
