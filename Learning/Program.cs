@@ -132,7 +132,7 @@ namespace Learning
 
             var textAnalyzer = new TextAnalyzer();
             textAnalyzer.AnalyzedText("TestFile.txt");
-            textAnalyzer.MainMenuChoice();            
+            textAnalyzer.MainMenuChoice();
         }
     }
 }
