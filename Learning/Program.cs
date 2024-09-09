@@ -4,6 +4,15 @@ namespace Learning
 {
     internal class Program
     {
+        #region paskaita apie exceptions 2024-08-28
+        //private static bool LogException(Exception e)
+        //{
+        //    Console.WriteLine($"\tIn the log routine. Caught {e.GetType()}");
+        //    Console.WriteLine($"\tMessage: {e.Message}");
+        //    return true;
+        //}
+        #endregion
+
         static void Main(string[] args)
         {
             #region paskaita apie abstrakcias klases ir interface 2024-08-27
@@ -123,22 +132,7 @@ namespace Learning
 
             var textAnalyzer = new TextAnalyzer();
             textAnalyzer.AnalyzedText("TestFile.txt");
-            textAnalyzer.MainMenuChoice();
-
-
-
-            
+            textAnalyzer.MainMenuChoice();            
         }
-
-        #region paskaita apie exceptions 2024-08-28
-        //private static bool LogException(Exception e)
-        //{
-        //    Console.WriteLine($"\tIn the log routine. Caught {e.GetType()}");
-        //    Console.WriteLine($"\tMessage: {e.Message}");
-        //    return true;
-        //}
-        #endregion
-
-
     }
 }
