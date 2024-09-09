@@ -9,6 +9,8 @@
         
         private string vidmantoPropertis = "";
 
+        private int vidmantoSkaicius = 9;
+
         private B b;
 
         public A()
