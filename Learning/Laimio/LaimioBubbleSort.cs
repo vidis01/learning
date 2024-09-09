@@ -4,8 +4,7 @@
     {
         public static int[] Sort(int[] intArray)
         {
-            //Sort algoritm
-
+            int[] number = new int[10];
 
             return intArray;
         }
