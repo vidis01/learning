@@ -1,4 +1,5 @@
-﻿using Learning.Manto;
+﻿using Database.Learning;
+using Learning.Manto;
 
 namespace Learning
 {
@@ -130,9 +131,20 @@ namespace Learning
             #endregion
 
 
-            var textAnalyzer = new TextAnalyzer();
-            textAnalyzer.AnalyzedText("TestFile.txt");
-            textAnalyzer.MainMenuChoice();
+            //var textAnalyzer = new TextAnalyzer();
+            //textAnalyzer.AnalyzedText("TestFile.txt");
+            //textAnalyzer.MainMenuChoice();
+
+            using (var db = new MyDBContext())
+            {
+                var shippers = db.Shippers;
+
+                if (shippers != null)
+                    foreach (var shipper in shippers)
+                {
+                    Console.WriteLine($"{shipper.ShipperID} {shipper.ShipperName} {shipper.Phone}");
+                }                
+            }
         }
     }
 }
