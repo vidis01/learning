@@ -1,4 +1,5 @@
 ﻿using Database.Learning;
+using Database.Learning.DbModels;
 using Learning.Manto;
 
 namespace Learning
@@ -137,13 +138,17 @@ namespace Learning
 
             using (var db = new MyDBContext())
             {
-                var shippers = db.Shippers;
+                //var result = db.Customers.Where( c => c.City == "London");
 
-                if (shippers != null)
-                    foreach (var shipper in shippers)
-                {
-                    Console.WriteLine($"{shipper.ShipperID} {shipper.ShipperName} {shipper.Phone}");
-                }                
+                //if (result != null)
+                //    foreach (var customer in result)
+                //{
+                //    Console.WriteLine($"{customer.CustomerID} {customer.CustomerName} {customer.City}");
+                //}
+
+                db.Categories.Add(new Category { CategoryName = "Mano nauja kategorija", Description = "good" });
+
+                db.SaveChanges();
             }
         }
     }
