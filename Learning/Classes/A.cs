@@ -12,6 +12,8 @@
         private int vidmantoSkaicius = 9;
 
         private string mantoAmzius = "no idea";
+
+        private string laimioPropertis = "";
         private B b;
 
         public A()
