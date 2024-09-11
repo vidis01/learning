@@ -131,10 +131,11 @@ namespace Learning
             //File.AppendAllLines(Path.Combine(docPath, "WriteFile.txt"), lines);
             #endregion
 
-
+            #region Manto text analyzer
             //var textAnalyzer = new TextAnalyzer();
             //textAnalyzer.AnalyzedText("TestFile.txt");
             //textAnalyzer.MainMenuChoice();
+            #endregion
 
             using (var db = new MyDBContext())
             {
@@ -145,8 +146,6 @@ namespace Learning
                 //{
                 //    Console.WriteLine($"{customer.CustomerID} {customer.CustomerName} {customer.City}");
                 //}
-
-                db.Categories.Add(new Category { CategoryName = "Mano nauja kategorija", Description = "good" });
 
                 db.SaveChanges();
             }
