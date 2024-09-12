@@ -1,6 +1,7 @@
 ﻿using Database.Learning;
 using Database.Learning.DbModels;
 using Learning.Manto;
+using Microsoft.EntityFrameworkCore;
 
 namespace Learning
 {
@@ -137,18 +138,28 @@ namespace Learning
             //textAnalyzer.MainMenuChoice();
             #endregion
 
-            using (var db = new MyDBContext())
-            {
-                //var result = db.Customers.Where( c => c.City == "London");
+            #region 2023-09-12 Linq, Inclde, ThenInclude naudojimas norint užkrauti susijusius duomenis
 
-                //if (result != null)
-                //    foreach (var customer in result)
-                //{
-                //    Console.WriteLine($"{customer.CustomerID} {customer.CustomerName} {customer.City}");
-                //}
+            //using (var db = new MyDBContext())
+            //{
+            //    var result = db.Customers
+            //        .Where(dd => dd.City == "London")
+            //        .Include(c => c.Orders)
+            //        .ThenInclude(o => o.Employee)
+            //        .Include(o => o.Orders)
+            //        .ThenInclude(o => o.Shipper);
 
-                db.SaveChanges();
-            }
+            //    if (result != null)
+            //    {
+            //        foreach (var customer in result)
+            //        {
+            //            Console.WriteLine($"{customer.CustomerName} {customer.Orders.Count}");
+            //        }
+
+            //    }
+            //}
+
+            #endregion
         }
     }
 }

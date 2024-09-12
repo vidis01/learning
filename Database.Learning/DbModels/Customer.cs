@@ -23,5 +23,8 @@ namespace Database.Learning.DbModels
 
         [MaxLength(50)]
         public required string Country { get; set; }
+
+        //Vadinasi navigaion propertis, dedamas tam kad patogiai uzsikrautume susijusius duomenis
+        public List<Order> Orders { get; set; }
     }
 }
