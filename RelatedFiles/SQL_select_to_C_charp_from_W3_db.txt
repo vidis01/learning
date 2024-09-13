@@ -1,0 +1,7 @@
+SELECT 'modelBuilder.Entity<Supplier>().HasData(new Supplier { SupplierID = ' + CONVERT(varchar, SupplierID) + ', ' + 'SupplierName = ' + '"' + SupplierName + '", ' + 'ContactName = ' + '"' + ContactName + '", ' + 'Address = ' + '"' + Address + '", ' + 'City = ' + '"' + City + '", ' + 'PostalCode = ' + '"' + PostalCode + '", ' + 'Country = ' + '"' + Country + '", ' + 'Phone = ' + '"' + Phone + '"});' FROM Suppliers;
+
+SELECT 'modelBuilder.Entity<Customer>().HasData(new Customer { CustomerID = ' + CONVERT(varchar, CustomerID) + ', CustomerName = "' + CustomerName + '", ContactName = "' + ContactName + '", Address = "' + Address + '", City = "' + City + '", PostalCode = "' + PostalCode + '", Country = "' + Country + '"});' FROM Customers;
+
+SELECT 'modelBuilder.Entity<Order>().HasData(new Order { OrderID = ' + CONVERT(varchar, OrderID) + ', CustomerID = ' + CONVERT(varchar, CustomerID) + ', EmployeeID = ' + CONVERT(varchar, EmployeeID) + ', OrderDate = new DateTime(rand.Next(1999, 2011), rand.Next(1, 13), rand.Next(1, 29)), ShipperID = ' + CONVERT(varchar, ShipperID) + '});' FROM Orders;
+
+SELECT 'modelBuilder.Entity<OrderDetail>().HasData(new OrderDetail { OrderDetailID = ' + CONVERT(varchar, OrderDetailID) + ', OrderID = ' + CONVERT(varchar, OrderID) + ', ProductID = ' + CONVERT(varchar, ProductID) + ', Quantity = ' + CONVERT(varchar, Quantity) + '});' FROM OrderDetails;
