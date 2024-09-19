@@ -158,7 +158,34 @@ namespace Learning
 
             //    }
             //}
+            #endregion
 
+            #region 2023-09-19 Linq methods
+            //using (var db = new MyDBContext())
+            //{
+            //db.Shippers.Add(new Shipper { Phone = "12345", ShipperName = "Jonaitis" });
+
+            //db.Shippers.Remove(db.Shippers.Single(s => s.ShipperID == 6));
+
+            //var result = db.Customers
+            //    .Where(dd => dd.City == "London")
+            //    .Select(s => new { s.ContactName, s.CustomerName , s.Orders.Count});
+
+            //var shipper2 = db.Shippers.Where(s => s.ShipperID > 4);
+            //var shipper3 = shipper2.SingleOrDefault(s => s.ShipperID ==  6);
+            //var a = shipper2.Count();
+
+            //var shipper = db.Shippers.FirstOrDefault(s => s.ShipperID ==  6);
+
+            //var s = result.ToArray();
+
+            //foreach (var item in s)
+            //{
+            //    Console.WriteLine($"{item.ContactName} {item.CustomerName} {item.Count}");
+            //}
+
+            //db.SaveChanges();
+            //}
             #endregion
         }
     }
