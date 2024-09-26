@@ -1,5 +1,6 @@
 ﻿using Database.Learning;
 using Database.Learning.DbModels;
+using Learning.Classes;
 using Learning.Manto;
 using Microsoft.EntityFrameworkCore;
 
@@ -138,7 +139,7 @@ namespace Learning
             //textAnalyzer.MainMenuChoice();
             #endregion
 
-            #region 2023-09-12 Linq, Inclde, ThenInclude naudojimas norint užkrauti susijusius duomenis
+            #region 2024-09-12 Linq, Inclde, ThenInclude naudojimas norint užkrauti susijusius duomenis
 
             //using (var db = new MyDBContext())
             //{
@@ -160,7 +161,7 @@ namespace Learning
             //}
             #endregion
 
-            #region 2023-09-19 Linq methods
+            #region 2024-09-19 Linq methods
             //using (var db = new MyDBContext())
             //{
             //db.Shippers.Add(new Shipper { Phone = "12345", ShipperName = "Jonaitis" });
@@ -186,6 +187,13 @@ namespace Learning
 
             //db.SaveChanges();
             //}
+            #endregion
+
+            #region 2024-09-25 SOLID priciples, depend on abstraction
+
+            var game = new Game(new WordSelectorFromFile(new ReadFromfile()));
+            game.Play();
+
             #endregion
         }
     }
