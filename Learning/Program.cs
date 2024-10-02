@@ -191,8 +191,8 @@ namespace Learning
 
             #region 2024-09-25 SOLID priciples, depend on abstraction
 
-            var game = new Game(new WordSelectorFromFile(new ReadFromfile()));
-            game.Play();
+            //var game = new Game(new WordSelectorFromFile(new ReadFromfile()));
+            //game.Play();
 
             #endregion
         }
