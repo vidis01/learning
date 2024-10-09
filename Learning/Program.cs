@@ -3,6 +3,10 @@ using Database.Learning.DbModels;
 using Learning.Classes;
 using Learning.Manto;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Data;
+using WarGame.Classes;
+using WarGame.Interfaces;
 
 namespace Learning
 {
@@ -196,6 +200,11 @@ namespace Learning
 
             #endregion
 
+            #region WarGame
+
+            WarGame.Classes.Game game = new WarGame.Classes.Game(new Deck(), new List<IPlayer>() { new Player("Mantas"), new Player("Vidmantas") }, new Rules());
+            game.Play();
+            #endregion
         }
     }
 }

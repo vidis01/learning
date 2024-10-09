@@ -3,12 +3,41 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WarGame.Enums;
+using WarGame.Interfaces;
 
 namespace WarGame.Classes
 {
-    internal class Deck
+    public class Deck : IDeck
     {
-
-
+        public List<ICard> DeckOfCards { get; set; }
+        private Random _random;
+        public Deck()
+        {
+            DeckOfCards = new();
+            _random = new();
+            InitializeCards();
+        }
+        private void InitializeCards()
+        {
+            foreach (var item in Enum.GetValues<KindEnum>())
+            {
+                for (int i = 2; i <= 10; i++)
+                {
+                    DeckOfCards.Add(new Card(item, $"{i}", i));   
+                }
+                DeckOfCards.Add(new Card(item, "J", 10));
+                DeckOfCards.Add(new Card(item, "Q", 10));
+                DeckOfCards.Add(new Card(item, "K", 10));
+                DeckOfCards.Add(new Card(item, "A", 10));
+            }
+        }
+        public ICard DrawACard()
+        {
+            var card = DeckOfCards[_random.Next(0, DeckOfCards.Count)];
+            DeckOfCards.Remove(card);
+            return card;
+        }
     }
+
 }

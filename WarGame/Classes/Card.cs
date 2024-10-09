@@ -1,20 +1,21 @@
 ﻿
 
-using WarGame.Enum;
+using WarGame.Enums;
+using WarGame.Interfaces;
 
 namespace WarGame.Classes
 {
-    internal class Card
+    internal class Card : ICard
     {
-        public KindEnum Kind { get; private set; }
-        public string Name { get; private set; }
-        public int Value { get; private set; }
+        public KindEnum Kind { get; set; }
+        public string Name { get; set; }
+        public int Value { get; set; }
 
         public Card(KindEnum kind, string name, int value)
         {
-            kind = Kind;
-            name = Name;
-            value = Value; 
+            Kind = kind;
+            Name = name;
+            Value = value; 
         }
     }
 }

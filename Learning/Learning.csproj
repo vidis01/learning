@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Database.Learning\Database.Learning.csproj" />
+    <ProjectReference Include="..\WarGame\WarGame.csproj" />
   </ItemGroup>
 
   <ItemGroup>
