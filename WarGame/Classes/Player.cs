@@ -23,6 +23,21 @@ namespace WarGame.Classes
         {
             DealtCards.Add(card);
         }
+        public ICard PlayACard()
+        {
+            var cardDealt = DealtCards[0];
+            DealtCards.Remove(cardDealt);
+            return cardDealt;
+        }
+        public void TakeWonCards(List<ICard> cardsWon)
+        {
+            WonCards.AddRange(cardsWon);       
+        }
+        public int CountTotalPoints()
+        {
+            int sum = WonCards.Sum(a => a.Value);
 
+            return sum;
+        }
     }
 }

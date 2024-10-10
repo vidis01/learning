@@ -12,5 +12,6 @@ namespace WarGame.Interfaces
         public KindEnum Kind { get; set; }
         public string Name { get; set; }
         public int Value { get; set; }
+        public int CardRank { get; set; }
     }
 }

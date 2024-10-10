@@ -202,8 +202,12 @@ namespace Learning
 
             #region WarGame
 
-            WarGame.Classes.Game game = new WarGame.Classes.Game(new Deck(), new List<IPlayer>() { new Player("Mantas"), new Player("Vidmantas") }, new Rules());
-            game.Play();
+            for (int i = 1; i <= 15; i++)
+            {
+                WarGame.Classes.Game game = new WarGame.Classes.Game(new Deck(), new List<IPlayer>() { new Player("Mantas"), new Player("Vidmantas") }, new Rules());
+                game.Play();
+                Thread.Sleep(1000);
+            }
             #endregion
         }
     }

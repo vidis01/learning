@@ -22,14 +22,15 @@ namespace WarGame.Classes
         {
             foreach (var item in Enum.GetValues<KindEnum>())
             {
-                for (int i = 2; i <= 10; i++)
+                int i = 2;
+                for (i = 2; i <= 10; i++)
                 {
-                    DeckOfCards.Add(new Card(item, $"{i}", i));   
+                    DeckOfCards.Add(new Card(item, $"{i}", i, i));
                 }
-                DeckOfCards.Add(new Card(item, "J", 10));
-                DeckOfCards.Add(new Card(item, "Q", 10));
-                DeckOfCards.Add(new Card(item, "K", 10));
-                DeckOfCards.Add(new Card(item, "A", 10));
+                DeckOfCards.Add(new Card(item, "J", 10, i));
+                DeckOfCards.Add(new Card(item, "Q", 10, ++i));
+                DeckOfCards.Add(new Card(item, "K", 10, ++i));
+                DeckOfCards.Add(new Card(item, "A", 10, ++i));
             }
         }
         public ICard DrawACard()

@@ -14,5 +14,9 @@ namespace WarGame.Interfaces
         public List<ICard> WonCards { get; set; }
 
         public void GetCard(ICard card);
+        public ICard PlayACard();
+        public void TakeWonCards(List<ICard> cardsWon);
+        public int CountTotalPoints();
+
     }
 }

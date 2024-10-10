@@ -8,5 +8,6 @@ namespace WarGame.Interfaces
 {
     public interface IRules
     {
+        public int DecideRoundWinner(List<ICard> playingCards);
     }
 }
