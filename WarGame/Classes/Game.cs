@@ -23,19 +23,35 @@ namespace WarGame.Classes
 
         public void Play()
         {
+            int howManyCardsToDeal = _deck.DeckOfCards.Count / _players.Count;
+
             DealingCards();
-            
-            for (int i = 1; i <= 26; i++)
+
+            int playerIndex = 0;
+            for (int i = 1; i <= howManyCardsToDeal; i++)
             {
+                playerIndex = 0;
                 List<ICard> roundCards = new();
+                Console.WriteLine($"Round {i}: ");
+
                 foreach (var player in _players)
                 {
                     roundCards.Add(player.PlayACard());
+                    Console.WriteLine($"{player.Name}'s card: {roundCards[playerIndex].Name} of {roundCards[playerIndex].Kind}");
+                    playerIndex++;
                 }
+
                 int result = _rules.DecideRoundWinner(roundCards);
+
                 if (result != -1)
                 {
+                    Console.WriteLine($"{_players[result].Name}'s won this round!\n");
                     _players[result].TakeWonCards(roundCards);
+                    Thread.Sleep(2000);
+                }
+                else
+                {
+                    Console.WriteLine("It's a tie!\n");
                 }
             }
 

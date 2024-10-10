@@ -202,7 +202,7 @@ namespace Learning
 
             #region WarGame
 
-            for (int i = 1; i <= 15; i++)
+            for (int i = 1; i <= 1; i++)
             {
                 WarGame.Classes.Game game = new WarGame.Classes.Game(new Deck(), new List<IPlayer>() { new Player("Mantas"), new Player("Vidmantas") }, new Rules());
                 game.Play();
