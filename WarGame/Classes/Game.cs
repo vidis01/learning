@@ -75,13 +75,68 @@ namespace WarGame.Classes
         }
 
 
-        private void DealingCards()
+        public void DealingCards()
         {     
             for (int i = 0; i < 26; i++)
             {
                 _players[0].GetCard(_deck.DrawACard());
                 _players[1].GetCard(_deck.DrawACard());
             }
+        }
+
+        public List<string> PlayRound(int roundNumber)
+        {
+            var results = new List<string>();
+
+            var playerIndex = 0;
+            List<ICard> roundCards = new();
+            results.Add($"Round {roundNumber}: ");
+
+            foreach (var player in _players)
+            {
+                roundCards.Add(player.PlayACard());
+                results.Add($"{player.Name}'s card: {roundCards[playerIndex].Name} of {roundCards[playerIndex].Kind}");
+                playerIndex++;
+            }
+
+            int result = _rules.DecideRoundWinner(roundCards);
+
+            if (result != -1)
+            {
+                results.Add($"{_players[result].Name}'s won this round!\n");
+                _players[result].TakeWonCards(roundCards);
+                //Thread.Sleep(2000);
+            }
+            else
+            {
+                results.Add("It's a tie!\n");
+            }
+
+            return results;
+        }
+
+        public List<string> WhoWin()
+        {
+            var results = new List<string>();
+
+            List<int> totalPoints = new();
+            var highestPoints = 0;
+            foreach (var player in _players)
+            {
+                totalPoints.Add(player.CountTotalPoints());
+            }
+
+            highestPoints = totalPoints.Max();
+
+            for (int i = 0; i < totalPoints.Count(); i++)
+            {
+                if (totalPoints[i] == highestPoints)
+                {
+                    results.Add($"Winner is {_players[i].Name}, total points: {totalPoints[i]}");
+                }
+            }
+
+            return results;
         }
     }
 }
